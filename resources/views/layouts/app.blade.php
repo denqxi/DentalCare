@@ -93,10 +93,10 @@
                     <a class="w-full" href="{{ route('form') }}">Registration</a>
                     </li> 
                     <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                    <a class="w-full" href="{{ route('register') }}">Registered</a>
+                    <a class="w-full" href="{{ route('patients.registered') }}">Registered</a>
                     </li>
                     <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                    <a class="w-full" href="{{ url('/404') }}">History</a>
+                    <a class="w-full" href="{{ route('history.index') }}">History</a>
                     </li>
                 </ul>
                 </template>

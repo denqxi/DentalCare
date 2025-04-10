@@ -24,13 +24,13 @@
             <img
               aria-hidden="true"
               class="object-cover w-full h-full dark:hidden"
-              src="{{ asset('assets/img/forgot-password-office.jpeg') }}"
+              src="{{ asset('assets/img/forgotpasswordDC.jpg') }}"
               alt="Office"
             />
             <img
               aria-hidden="true"
               class="hidden object-cover w-full h-full dark:block"
-              src="{{ asset('assets/img/forgot-password-office-dark.jpeg') }}"
+              src="{{ asset('assets/img/forgotpasswordDC.jpg') }}"
               alt="Office"
             />
           </div>

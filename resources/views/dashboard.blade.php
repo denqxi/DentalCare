@@ -1,21 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <main class="h-full overflow-y-auto">
+<main class="h-full overflow-y-auto min-h-screen" style="background: linear-gradient(to bottom, #e0f7fa, #b2ebf2);">
         <div class="container px-9 mx-auto grid">
-        <h2
-            class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
-        >
+        <h2 class="my-6 text-2xl font-semibold text-black">
             DASHBOARD
         </h2>
         <!-- Cards -->
         <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-8">
             <!-- Card -->
             <div
-            class="flex items-center p-6 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-            >
+            class="flex items-center p-6 rounded-lg shadow-xs"
+                    style="background-color: #2d3748; color: #f7fafc;" /* Dark background, light text */>
+
             <div
-                class="p-6 mr-6 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500"
+              class="p-3 mr-6 text-orange-500 bg-orange-100 rounded-full"
             >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path
@@ -25,12 +24,14 @@
             </div>
             <div>
                 <p
-                class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
+                class="mb-2 text-sm font-medium"
+                            style="color: #e2e8f0;" /* Light text */
                 >
                 Total Patient Registered
                 </p>
                 <p
-                class="text-lg font-semibold text-gray-700 dark:text-gray-200"
+                class="text-lg font-semibold"
+                            style="color: #ffffff;" /* White text */
                 >
                 20
                 </p>
@@ -39,7 +40,8 @@
             
             <!-- Card -->
             <div
-            class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+            class="flex items-center p-4 shadow-xs dark:bg-gray-800"
+            style="background-color: #2d3748; color: #f7fafc;"
             >
             <div
                 class="p-6 mr-6 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500"
@@ -59,7 +61,8 @@
                 Total Appointments
                 </p>
                 <p
-                class="text-lg font-semibold text-gray-700 dark:text-gray-200"
+                class="text-lg font-semibold"
+                            style="color: #ffffff;" /* White text */
                 >
                 20
                 </p>
@@ -67,7 +70,8 @@
             </div>
             <!-- Card -->
             <div
-            class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+            class="flex items-center p-4 rounded-lg shadow-xs"
+                    style="background-color: #2d3748; color: #f7fafc;"
             >
             <div
                 class="p-6 mr-6 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500"
@@ -80,12 +84,14 @@
             </div>
             <div>
                 <p
-                class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
+                class="mb-2 text-sm font-medium"
+                            style="color: #e2e8f0;" /* Light text */
                 >
                 Total History
                 </p>
                 <p
-                class="text-lg font-semibold text-gray-700 dark:text-gray-200"
+                class="text-lg font-semibold"
+                style="color: #ffffff;" /* White text */
                 >
                 10
                 </p>
@@ -93,7 +99,8 @@
             </div>
             <!-- Card -->
             <div
-            class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+            class="flex items-center p-4 rounded-lg shadow-xs"
+                    style="background-color: #2d3748; color: #f7fafc;"
             >
             <div
                 class="p-6 mr-6 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500"
@@ -108,12 +115,14 @@
             </div>
             <div>
                 <p
-                class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
+                class="mb-2 text-sm font-medium"
+                            style="color: #e2e8f0;"
                 >
                 Total Inventory
                 </p>
                 <p
-                class="text-lg font-semibold text-gray-700 dark:text-gray-200"
+                class="text-lg font-semibold"
+                            style="color: #ffffff;" /* White text */
                 >
                 15
                 </p>
