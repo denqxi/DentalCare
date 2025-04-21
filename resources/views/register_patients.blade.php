@@ -62,7 +62,9 @@
                         </label>
                     </div>
 
-                    <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-700">
+                    <button 
+                        type="submit" 
+                        class="px-4 py-2 text-sm font-medium text-green-100 border  bg-green-600 rounded-lg hover:bg-green-700 dark:text-white">
                         Submit
                     </button>
                 </form>

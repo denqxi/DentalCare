@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('email')->unique();
             $table->string('phone')->nullable();
+            $table->text('medical_history')->nullable();
             $table->timestamps();
         });
     }

@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\Models\MedicalHistory;
+use App\Models\TreatmentRecord;
 
 class Patient extends Model
 {
@@ -49,4 +51,20 @@ class Patient extends Model
 
         return $uniqueId;
     }
+
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class, 'patient_id', 'patient_id');
+    }
+
+    public function medicalHistories()
+    {
+        return $this->hasMany(MedicalHistory::class, 'patient_id');
+    }
+
+    public function treatmentRecords()
+    {
+        return $this->hasMany(TreatmentRecord::class, 'patient_id');
+    }
+
 }

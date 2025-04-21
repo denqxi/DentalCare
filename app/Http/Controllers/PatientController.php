@@ -76,4 +76,69 @@ class PatientController extends Controller
             ], 500);
         }
     }
+
+    public function index()
+    {
+        $patients = Patient::all();
+        return view('patients.registered_patients', compact('patients'));
+    }
+
+    public function edit($patient_id)
+    {
+        $patient = Patient::findOrFail($patient_id);
+        return view('patients.edit_patient', compact('patient'));
+    }
+
+    public function update(Request $request, $patient_id)
+    {
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'gender' => 'required|in:Male,Female',
+            'birth_date' => 'required|date',
+            'address' => 'required|string|max:255',
+            'email' => 'required|email|unique:patients,email,' . $patient_id,
+            'phone_number' => 'required|string|max:15',
+        ]);
+
+        $patient = Patient::findOrFail($patient_id);
+        $patient->update($validated);
+
+        return redirect()->route('patients.show', $patient_id)->with('status', 'Patient updated successfully!');
+    }
+
+    public function show($patient_id)
+    {
+        $patient = Patient::with(['medicalHistories', 'treatmentRecords', 'appointments'])->findOrFail($patient_id);
+        return view('patients.show_details', compact('patient'));
+    }
+
+
+    public function destroy($patient_id)
+    {
+        try {
+            // Find the patient by ID
+            $patient = Patient::where('patient_id', $patient_id)->firstOrFail();
+
+            // Delete the patient
+            $patient->delete();
+
+            // Log the deletion
+            Log::info('Patient deleted:', ['patient_id' => $patient_id]);
+
+            return response()->json([
+                'status'  => 'success',
+                'message' => 'Patient deleted successfully!'
+            ], 200);
+
+        } catch (\Exception $e) {
+            Log::error('Deletion error:', ['message' => $e->getMessage()]);
+
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'An error occurred while deleting the patient.'
+            ], 500);
+        }
+    }
+
 }
