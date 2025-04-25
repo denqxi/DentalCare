@@ -25,7 +25,7 @@
 
         <!-- Table -->
         <div class="overflow-x-auto">
-            <table class="min-w-full border border-gray-200 divide-y divide-gray-200">
+            <table class="w-full border border-gray-200 divide-y divide-gray-200">
                 <thead class="bg-gray-100">
                     <tr>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Item Name</th>
@@ -43,7 +43,6 @@
                             <td class="px-6 py-4">{{ $item->quantity_in_stock }}</td>
                             <td class="px-6 py-4">₱{{ number_format($item->price_per_unit, 2) }}</td>
                             <td class="px-6 py-4">
-                                <!-- Stock Movement Buttons -->
                                 <a href="{{ route('stock-movements.create', ['inventory_id' => $item->id, 'movement_type' => 'in']) }}"
                                     class="text-green-600 hover:text-green-900">Stock In</a> |
                                 <a href="{{ route('stock-movements.create', ['inventory_id' => $item->id, 'movement_type' => 'out']) }}"

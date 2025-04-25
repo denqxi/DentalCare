@@ -10,7 +10,7 @@ class Inventory extends Model
     use HasFactory;
 
     // Specify the table name explicitly
-    protected $table = 'inventory';
+    protected $table = 'inventories';
 
     // Define the fillable attributes
     protected $fillable = [

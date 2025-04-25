@@ -8,7 +8,7 @@ class AddFieldsToInventoryTable extends Migration
 {
     public function up()
     {
-        Schema::table('inventory', function (Blueprint $table) {
+        Schema::table('inventories', function (Blueprint $table) {
             $table->enum('item_type', ['consumable', 'equipment'])->after('item_name');
             $table->integer('threshold')->after('quantity_in_stock')->default(0);  // Low stock alert threshold
             $table->date('expiration_date')->nullable()->after('threshold');  // Expiration date for consumables
@@ -19,7 +19,7 @@ class AddFieldsToInventoryTable extends Migration
 
     public function down()
     {
-        Schema::table('inventory', function (Blueprint $table) {
+        Schema::table('inventories', function (Blueprint $table) {
             $table->dropColumn(['item_type', 'threshold', 'expiration_date', 'supplier_name', 'status']);
         });
     }

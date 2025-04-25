@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->string('patient_id', 5); // Set patient_id as varchar(5)
+            $table->string('treatment_type');
             $table->dateTime('appointment_date');
             $table->enum('status', ['Pending', 'Completed', 'Cancelled']);
-            $table->text('notes')->nullable();
+            $table->text('message')->nullable();
             $table->timestamps();
 
             // Add foreign key constraint

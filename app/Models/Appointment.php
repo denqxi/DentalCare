@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Appointment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['patient_id', 'appointment_date', 'status', 'notes'];
+    protected $fillable = ['patient_id', 'appointment_date', 'status', 'notes', 'treatment_type'];
 
     /**
      * Define the relationship with the Patient model.

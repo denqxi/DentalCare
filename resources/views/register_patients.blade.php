@@ -8,23 +8,27 @@
             </h2>
 
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-                <form method="POST" action="{{ route('patients.store') }}">
+
+                <!-- Error Messages Placeholder -->
+                <div id="toast" style="display:none;">Success! Patient Registered.</div>
+
+                <form id="registration-form" method="POST" action="{{ route('patients.store') }}">
                     @csrf  {{-- Protects against CSRF attacks --}}
                     
                     <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-6">
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">First Name</span>
-                            <input name="first_name" class="block mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 form-input" placeholder="Jane">
+                            <input name="first_name" class="block mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 form-input">
                         </label>
 
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">Middle Name</span>
-                            <input name="middle_name" class="block mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 form-input" placeholder="Snape">
+                            <input name="middle_name" class="block mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 form-input">
                         </label>
 
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">Last Name</span>
-                            <input name="last_name" class="block mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 form-input" placeholder="Severus">
+                            <input name="last_name" class="block mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 form-input">
                         </label>
 
                         <label class="block text-sm">
@@ -53,12 +57,12 @@
 
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">Email Address</span>
-                            <input type="email" name="email" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 form-input" placeholder="jane@example.com">
+                            <input type="email" name="email" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 form-input" placeholder="Email">
                         </label>   
 
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">Phone Number</span>
-                            <input name="phone_number" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 form-input" placeholder="Phone Number">
+                            <input name="phone" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 form-input" placeholder="Phone Number">
                         </label>
                     </div>
 
@@ -73,33 +77,53 @@
     </main>
 
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelector("form").addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent normal form submission
-            
-            let form = this;
-            let formData = new FormData(form);
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById('registration-form'); // Get form by ID
 
-            fetch("{{ route('patients.store') }}", {
-                method: "POST",
-                body: formData,
-                headers: {
-                    "X-CSRF-TOKEN": document.querySelector("input[name=_token]").value
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === "success") {
-                    alert("Patient registered successfully!");
-                    form.reset(); // Reset form after successful submission
-                } else {
-                    alert("Registration failed! Please check the form.");
-                    console.error("Errors:", data.errors);
-                }
-            })
-            .catch(error => console.error("Error:", error));
+            form.addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent default form submission (page reload)
+
+                const formData = new FormData(form); // Gather form data
+
+                // Perform the AJAX request using fetch()
+                fetch("{{ route('patients.store') }}", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "X-CSRF-TOKEN": document.querySelector("input[name=_token]").value
+                    }
+                })
+                .then(response => response.json()) // Parse JSON response
+                .then(data => {
+                    if (data.status === "success") {
+                        // Display success message via Toast or alert
+                        showToast("Patient registered successfully!");
+                        form.reset(); // Reset form fields
+
+                        // Optionally, redirect to another page
+                        // window.location.replace("{{ route('patients.index') }}");
+                    } else {
+                        // Handle error
+                        showToast("Error occurred! Please try again.");
+                    }
+                })
+                .catch(error => {
+                    // Log and display unexpected errors
+                    console.error("Error:", error);
+                    showToast("An unexpected error occurred.");
+                });
+            });
+
+            // Toast function to show success/error messages
+            function showToast(message) {
+                const toast = document.getElementById('toast');
+                toast.innerHTML = message; // Set the message
+                toast.style.display = 'block'; // Show the toast
+                setTimeout(() => {
+                    toast.style.display = 'none'; // Hide the toast after 3 seconds
+                }, 3000);
+            }
         });
-    });
     </script>
 @endsection
 

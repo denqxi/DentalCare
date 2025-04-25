@@ -23,7 +23,7 @@ class PatientController extends Controller
                 'gender'       => 'required|in:Male,Female',
                 'address'      => 'required|string|max:255',
                 'email'        => 'required|email|unique:patients,email',
-                'phone_number' => 'required|string|max:15',
+                'phone' => 'required|string|max:15',
             ]);
 
             // Generate a unique 5-character patient ID
@@ -41,7 +41,7 @@ class PatientController extends Controller
                 'gender'       => $validated['gender'],
                 'address'      => $validated['address'],
                 'email'        => $validated['email'],
-                'phone' => $validated['phone_number'],
+                'phone' => $validated['phone'],
             ]);
 
             // Log the created patient for debugging
@@ -141,4 +141,14 @@ class PatientController extends Controller
         }
     }
 
+    public function fetchPatientDetails($id)
+    {
+        $patient = Patient::find($id);
+
+        if ($patient) {
+            return response()->json(['success' => true, 'patient' => $patient]);
+        }
+
+        return response()->json(['success' => false], 404);
+    }
 }

@@ -27,7 +27,7 @@ class Patient extends Model
         'gender',
         'address',
         'email',
-        'phone_number', 
+        'phone', 
     ];    
 
     // Auto-generate unique 5-character patient_id
@@ -62,9 +62,9 @@ class Patient extends Model
         return $this->hasMany(MedicalHistory::class, 'patient_id');
     }
 
+    // Correct Eloquent relationship method for treatment records
     public function treatmentRecords()
     {
-        return $this->hasMany(TreatmentRecord::class, 'patient_id');
+        return $this->hasMany(TreatmentRecord::class, 'patient_id', 'patient_id');
     }
-
 }
