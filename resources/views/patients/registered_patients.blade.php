@@ -6,7 +6,17 @@
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             REGISTERED PATIENTS
         </h2>
-
+ <!-- Search Form -->
+ <div class="mb-4">
+            <form method="GET" action="{{ route('patients.index') }}">
+                <div class="flex items-center">
+                    <input type="text" name="search" value="{{ request()->get('search') }}" class="px-4 py-2 text-sm border border-gray-300 rounded-md dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Search by name, email or ID">
+                    <button type="submit" class="px-4 py-2 text-sm font-medium text-green-100 border bg-green-600 rounded-lg hover:bg-green-700 dark:text-white flex items-center">
+    <i class="fas fa-search mr-2"></i> Search
+</button>
+                </div>
+            </form>
+        </div>
         <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
                 <table class="w-full whitespace-no-wrap">
