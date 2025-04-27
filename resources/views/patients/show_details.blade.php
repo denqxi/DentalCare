@@ -4,7 +4,7 @@
 <main class="h-full pb-16 overflow-y-auto">
     <div class="container px-6 mx-auto grid">
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Patient Details
+            PATIENT DETAILS
         </h2>
 
         <div class="w-full overflow-hidden rounded-lg shadow-xs">
@@ -35,7 +35,7 @@
                 </table>
                 
                 <!-- Medical History -->
-                <h3 class="mt-6 text-xl font-semibold text-gray-700 dark:text-gray-200">Medical History</h3>
+                <h3 class="mt-6 text-xl font-semibold text-gray-600 dark:text-gray-200">Medical History</h3>
                 <table class="w-full whitespace-no-wrap">
                     <thead>
                         <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -56,7 +56,7 @@
                 </table>
 
                 <!-- Treatment Records -->
-                <h3 class="mt-6 text-xl font-semibold text-gray-700 dark:text-gray-200">Treatment Records</h3>
+                <h3 class="mt-6 text-xl font-semibold text-gray-600 dark:text-gray-200">Treatment Records</h3>
                 <table class="w-full whitespace-no-wrap">
                     <thead>
                         <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -77,7 +77,7 @@
                 </table>
 
                 <!-- Appointments -->
-                <h3 class="mt-6 text-xl font-semibold text-gray-700 dark:text-gray-200">Appointments</h3>
+                <h3 class="mt-6 text-xl font-semibold text-gray-600 dark:text-gray-200">Appointments</h3>
                 <table class="w-full whitespace-no-wrap">
                     <thead>
                         <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -96,8 +96,8 @@
                 </table>
 
                 <div class="mt-6">
-                    <a href="{{ route('patients.edit_patient', $patient->patient_id) }}" class="text-blue-600">Edit</a>
-                    <a href="{{ route('patients.index') }}" class="text-blue-600 ml-4">Back to list</a>
+                    <a href="{{ route('patients.edit_patient', $patient->patient_id) }}" class="text-gray-700 hover:underline dark:text-white">Edit</a>
+                    <a href="{{ route('patients.index') }}" class="text-gray-700 hover:underline dark:text-white">Back to list</a>
                 </div>
             </div>
         </div>
