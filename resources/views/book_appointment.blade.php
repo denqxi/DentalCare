@@ -9,15 +9,22 @@
   
   <style>
     body {
-      font-family: 'Times New Roman', Times, serif;
       background-color: #f0f0f0;
     }
   </style>
 </head>
 <body>
   <div class="flex min-h-screen">
+
     <!-- Left Section: Appointment Form -->
     <div class="w-full md:w-1/2 p-10 flex flex-col justify-center">
+
+       <!-- Back to Home Button -->
+       <div class="mb-6">
+        <a href="{{ route('homepage') }}" class="inline-flex items-center text-blue-600 hover:underline">
+          ← Back to Home
+        </a>
+      </div>
       <h1 class="text-3xl font-bold mb-4">Book your appointment with <span class="text-blue-600">Dental Care</span> in 2 minutes</h1>
       <p class="mb-6 text-gray-600">Schedule your dental appointment easily. Just fill out the form and we'll get back to you as soon as possible.</p>
 
@@ -35,7 +42,7 @@
 
         <input type="tel" id="phone-number" name="phone_number" placeholder="Phone Number" class="w-full p-3 border rounded-md bg-gray-100" required>
 
-        <!-- Gender Selection -->
+       <!-- Gender Selection -->
         <div class="flex gap-4">
             <label class="flex items-center">
                 <input type="hidden" name="gender" value="Male" id="gender-male" class="mr-2"> Male

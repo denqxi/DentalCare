@@ -51,6 +51,10 @@ Route::middleware('auth')->group(function () {
         return view('register_patients');
     })->name('register_patients');   
 
+    Route::get('/', function () {
+        return view('homepage');
+    })->name('homepage');
+
     // List of registered patients
     Route::get('/registered_patients', [PatientController::class, 'index'])->name('patients.index');
     // Show patient details
